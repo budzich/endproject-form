@@ -8,11 +8,11 @@ app.use(cors());
 
 require('./routes/authRoutes')(app);
 
-app.use('*', (req, res) => {
-  res.send({
-    message: 'Hi there!',
-  });
-});
+// app.use('*', (req, res) => {
+//   res.send({
+//     message: "Hi",
+//   });
+// });
 
 const PORT = process.env.PORT || 4000;
 

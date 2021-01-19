@@ -1,22 +1,22 @@
-const { nanoid } = require('nanoid');
+const {nanoid} = require('nanoid');
 
 const addDelay = require('../middlewares/addDelay');
 const randomizeResponse = require('../middlewares/randomizeResponse');
+const users = [];
 
 module.exports = (app) => {
-  app.post('/signup', addDelay, randomizeResponse, (req, res) => {
+  app.post('/post', randomizeResponse, (req, res) => {
     try {
-      const { email, name } = req.body;
-      const MOCK_USER_ID = nanoid();
+      users.push(req.body);
+      res.send({id: users.length - 1});
+    } catch (error) {
+      throw new Error(error);
+    }
+  });
 
-      res.status(201).send({
-        message: 'User successfully created',
-        data: {
-          _id: MOCK_USER_ID,
-          email,
-          name,
-        },
-      });
+  app.get('/post/:id', addDelay, randomizeResponse, (req, res) => {
+    try {
+      res.send(users[req.params.id]);
     } catch (error) {
       throw new Error(error);
     }
