@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "no-console": "warn",
+    "require-await": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "extends": "eslint:recommended"
+}
